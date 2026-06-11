@@ -1,12 +1,20 @@
 import os
+import streamlit as st
 from pymongo import MongoClient
 from google import genai
 from dotenv import load_dotenv
 
-# Environment load
 load_dotenv()
-MONGO_URI = os.getenv("MONGODB_URI")
-PROJECT_ID = os.getenv("GCP_PROJECT_ID")
+
+# Streamlit secrets ya local .env se variables lena
+MONGO_URI = st.secrets.get("MONGODB_URI", os.getenv("MONGODB_URI"))
+PROJECT_ID = st.secrets.get("GCP_PROJECT_ID", os.getenv("GCP_PROJECT_ID"))
+
+# Streamlit ke andar securely gcp-key.json file create karna
+if "GCP_KEY_JSON" in st.secrets:
+    with open("gcp-key.json", "w") as f:
+        f.write(st.secrets["GCP_KEY_JSON"])
+
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "gcp-key.json"
 
 # MongoDB connection set up
