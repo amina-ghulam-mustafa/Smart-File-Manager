@@ -41,7 +41,9 @@ pip install -r requirements.txt
 
 ### 3. Environment Variables
 Create a .env file in the root directory and add your credentials:
+
 GEMINI_API_KEY="your_google_cloud_gemini_api_key_here"
+
 MONGO_URI="your_mongodb_connection_string_here"
 
 ### 4. Run the Application
