@@ -1,0 +1,7 @@
+streamlit
+pymongo
+python-dotenv
+google-cloud-aiplatform
+google-generativeai
+PyPDF2
+Pillow
